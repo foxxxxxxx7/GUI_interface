@@ -1,15 +1,21 @@
 from tkinter import *
 
-def submit():
-    username = entry.get()
-    print("Hello", username)
-    #entry.config(state=DISABLED)
+# def submit():
+#     username = entry.get()
+#     print("Hello", username)
+#     #entry.config(state=DISABLED)
+#
+# def delete():
+#     entry.delete(0,END)
+#
+# def backspace():
+#     entry.delete(len(entry.get())-1,END)
 
-def delete():
-    entry.delete(0,END)
-
-def backspace():
-    entry.delete(len(entry.get())-1,END)
+def display():
+    if(x.get()==1):
+        print("Agreed!")
+    else:
+        print("Not Agreed")
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
@@ -20,23 +26,45 @@ photo = PhotoImage(file='Profile Circular Small.png')
 window.iconphoto(True, icon)
 window.config(background="#FFFFFF")
 
-entry = Entry(window,
-              font=("Arial", 50),
-              fg = "Blue",
-              bg="black",
-              show="*" #Usful for passwords
-              )
-#entry.insert(0,"Default Text")
-entry.pack(side=LEFT)
+x = IntVar()
+# x = BooleanVar()  # this is for when onvalue (or offvalue) is TRUE instead of 1!
+# x = StringVar()  # this is for when onvalue is "Yes" or "On", etc instead of 1 or TRUE!
 
-submit_button = Button(window, text="submit",command=submit)
-submit_button.pack(side=RIGHT)
+check_button = Checkbutton(window,
+                           text="Agree to the thing",
+                           variable=x,
+                           onvalue=1,
+                           offvalue=0,
+                           command=display,
+                           font=("Comic Sans", 30),
+                           fg="Blue",
+                           bg="white",
+                           activeforeground="Blue",
+                           activebackground="white",
+                           padx=20,
+                           pady=5,
+                           image=icon2,
+                           compound=RIGHT)
 
-delete_button = Button(window, text="delete",command=delete)
-delete_button.pack(side=RIGHT)
+check_button.pack()
 
-backspace_button = Button(window, text="backspace",command=backspace)
-backspace_button.pack(side=RIGHT)
+# entry = Entry(window,
+#               font=("Arial", 50),
+#               fg = "Blue",
+#               bg="black",
+#               show="*" #Usful for passwords
+#               )
+# #entry.insert(0,"Default Text")
+# entry.pack(side=LEFT)
+#
+# submit_button = Button(window, text="submit",command=submit)
+# submit_button.pack(side=RIGHT)
+#
+# delete_button = Button(window, text="delete",command=delete)
+# delete_button.pack(side=RIGHT)
+#
+# backspace_button = Button(window, text="backspace",command=backspace)
+# backspace_button.pack(side=RIGHT)
 
 # count = 0
 # def click():
