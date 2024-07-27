@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 # def submit():
 #     username = entry.get()
 #     print("Hello", username)
@@ -29,42 +30,97 @@ from tkinter import *
 #     else:
 #         print("wtf?")
 
-def submit_scale():
-    print("The temperature is "+str(scale.get())+ " degrees celcius")
+# def submit_scale():
+#     print("The temperature is "+str(scale.get())+ " degrees celcius")
+
+def submit_listbox():
+    selected_items = []
+
+    for index in listbox.curselection():
+        selected_items.insert(index, listbox.get(index))
+
+    if not selected_items:
+        print("You have ordered: Nothing")
+    else:
+        print("You have ordered: ")
+        for index in selected_items:
+            print(index)
+def add_listbox():
+    listbox.insert(listbox.size(), entryBox.get())
+    listbox.config(height=listbox.size())
+
+
+def delete_listbox():
+    for index in reversed(listbox.curselection()):
+        listbox.delete(index)
+    listbox.config(height=listbox.size())
+
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 
-fireImage = PhotoImage(file='fire.png')
-fireLable = Label(image=fireImage)
-fireLable.pack()
+listbox = Listbox(window,
+                  bg="#f7ffde",
+                  fg="black",
+                  font=("Constantia", 20),
+                  width=10,
+                  selectmode=MULTIPLE,
 
-scale = Scale(window,
-              from_=100,
-              to=0,
-              lengt=300,
-              orient=VERTICAL, #orientation of the scale default is vertical, can be horizontal
-              font=("Arial", 10),
-              tickinterval=10, #adds indicators for values at given intervals
-              showvalue=1, #will hide current value if =0
-              resolution=.1, #changes the increment value
-              troughcolor="Blue",
-              fg="Red",
-              bg="black",
-              )
-#scale.set(50)#alters starting position
-scale.set(((scale['from']-scale['to'])/2)+scale['to'])# clever way to have it always in the middle no matter the value of from and to
-scale.pack()
+                  )
+listbox.pack()
 
-snowflakeImage = PhotoImage(file='snowflake.png')
-snowflakeLabel = Label(image=snowflakeImage)
-snowflakeLabel.pack()
+listbox.insert(0, "pizza")
+listbox.insert(1, "pasta")
+listbox.insert(2, "garlic bread")
+listbox.insert(3, "soup")
+listbox.insert(4, "salad")
+
+listbox.config(height=listbox.size())
+
+entryBox = Entry(window)
+entryBox.pack()
+
+addButton = Button(window, text="add", command=add_listbox)
+addButton.pack()
+
+deleteButton = Button(window, text="delete", command=delete_listbox)
+deleteButton.pack()
+
+submitButton = Button(window, text="submit", command=submit_listbox)
+submitButton.pack()
+
+# fireImage = PhotoImage(file='fire.png')
+# fireLable = Label(image=fireImage)
+# fireLable.pack()
+#
+# scale = Scale(window,
+#               from_=100,
+#               to=0,
+#               lengt=300,
+#               orient=VERTICAL, #orientation of the scale default is vertical, can be horizontal
+#               font=("Arial", 10),
+#               tickinterval=10, #adds indicators for values at given intervals
+#               showvalue=1, #will hide current value if =0
+#               resolution=.1, #changes the increment value
+#               troughcolor="Blue",
+#               fg="Red",
+#               bg="black",
+#               )
+# #scale.set(50)#alters starting position
+# scale.set(((scale['from']-scale['to'])/2)+scale['to'])# clever way to have it always in the middle no matter the value of from and to
+# scale.pack()
+#
+# snowflakeImage = PhotoImage(file='snowflake.png')
+# snowflakeLabel = Label(image=snowflakeImage)
+# snowflakeLabel.pack()
+#
+#
+# button = Button(window,
+#                 text='submit',
+#                 command=submit_scale)
+# button.pack()
 
 
-button = Button(window,
-                text='submit',
-                command=submit_scale)
-button.pack()
 # steakImage = PhotoImage(file='Steak.png')
 # burgerImage = PhotoImage(file='Burger.png')
 # chickenImage = PhotoImage(file='Chicken.png')
