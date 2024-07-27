@@ -17,25 +17,58 @@ from tkinter import *
 #     else:
 #         print("Not Agreed")
 
-food = ["Steak", "Burger", "Chicken"]
+# food = ["Steak", "Burger", "Chicken"]
+#
+# def order():
+#     if(x.get()==0):
+#         print("You ordered Steak")
+#     elif(x.get()==1):
+#         print("you ordered a Burger")
+#     elif(x.get()==2):
+#         print("You ordered some Chicken")
+#     else:
+#         print("wtf?")
 
-def order():
-    if(x.get()==0):
-        print("You ordered Steak")
-    elif(x.get()==1):
-        print("you ordered a Burger")
-    elif(x.get()==2):
-        print("You ordered some Chicken")
-    else:
-        print("wtf?")
+def submit_scale():
+    print("The temperature is "+str(scale.get())+ " degrees celcius")
 
 window = Tk()  # instatiate an instance of a window
-# window.title("Fox's first window")
+window.title("Fox's first window")
 
-steakImage = PhotoImage(file='Steak.png')
-burgerImage = PhotoImage(file='Burger.png')
-chickenImage = PhotoImage(file='Chicken.png')
-foodImages = [steakImage,burgerImage, chickenImage ]
+fireImage = PhotoImage(file='fire.png')
+fireLable = Label(image=fireImage)
+fireLable.pack()
+
+scale = Scale(window,
+              from_=100,
+              to=0,
+              lengt=300,
+              orient=VERTICAL, #orientation of the scale default is vertical, can be horizontal
+              font=("Arial", 10),
+              tickinterval=10, #adds indicators for values at given intervals
+              showvalue=1, #will hide current value if =0
+              resolution=.1, #changes the increment value
+              troughcolor="Blue",
+              fg="Red",
+              bg="black",
+              )
+#scale.set(50)#alters starting position
+scale.set(((scale['from']-scale['to'])/2)+scale['to'])# clever way to have it always in the middle no matter the value of from and to
+scale.pack()
+
+snowflakeImage = PhotoImage(file='snowflake.png')
+snowflakeLabel = Label(image=snowflakeImage)
+snowflakeLabel.pack()
+
+
+button = Button(window,
+                text='submit',
+                command=submit_scale)
+button.pack()
+# steakImage = PhotoImage(file='Steak.png')
+# burgerImage = PhotoImage(file='Burger.png')
+# chickenImage = PhotoImage(file='Chicken.png')
+# foodImages = [steakImage,burgerImage, chickenImage ]
 
 # icon = PhotoImage(file='Fox Logo PNG.png')
 # icon2 = PhotoImage(file= 'Fox Logo tiny.png')
@@ -43,24 +76,24 @@ foodImages = [steakImage,burgerImage, chickenImage ]
 # window.iconphoto(True, icon)
 # window.config(background="#FFFFFF")
 
-x = IntVar()
-
-for index in range(len(food)):
-    radio_button = Radiobutton(window,
-                               text=food[index], # Adds tet to radio buttons
-                               variable=x, # groups radiobuttons together if they share the same variable
-                               value=index,# this assigns each radiobutton a different value
-                               padx=15,
-                               pady=5,
-                               font=("Impact", 30),
-                               image= foodImages[index],
-                               compound=LEFT,
-                               indicatoron=0,# eliminates circle indicators
-                               width=300, #sets width of radiobuttons
-                               command=order #set command of buttons to order function
-                               )
-
-    radio_button.pack(anchor=W) #W for west ('w' works too)
+# x = IntVar()
+#
+# for index in range(len(food)):
+#     radio_button = Radiobutton(window,
+#                                text=food[index], # Adds tet to radio buttons
+#                                variable=x, # groups radiobuttons together if they share the same variable
+#                                value=index,# this assigns each radiobutton a different value
+#                                padx=15,
+#                                pady=5,
+#                                font=("Impact", 30),
+#                                image= foodImages[index],
+#                                compound=LEFT,
+#                                indicatoron=0,# eliminates circle indicators
+#                                width=300, #sets width of radiobuttons
+#                                command=order #set command of buttons to order function
+#                                )
+#
+#     radio_button.pack(anchor=W) #W for west ('w' works too)
 
 # x = IntVar()
 # x = BooleanVar()  # this is for when onvalue (or offvalue) is TRUE instead of 1!
