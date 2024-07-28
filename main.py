@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import messagebox
 
 # def submit():
 #     username = entry.get()
@@ -33,61 +33,106 @@ from tkinter import *
 # def submit_scale():
 #     print("The temperature is "+str(scale.get())+ " degrees celcius")
 
-def submit_listbox():
-    selected_items = []
+# def submit_listbox():
+#     selected_items = []
+#
+#     for index in listbox.curselection():
+#         selected_items.insert(index, listbox.get(index))
+#
+#     if not selected_items:
+#         print("You have ordered: Nothing")
+#     else:
+#         print("You have ordered: ")
+#         for index in selected_items:
+#             print(index)
+# def add_listbox():
+#     listbox.insert(listbox.size(), entryBox.get())
+#     listbox.config(height=listbox.size())
+#
+#
+# def delete_listbox():
+#     for index in reversed(listbox.curselection()):
+#         listbox.delete(index)
+#     listbox.config(height=listbox.size())
 
-    for index in listbox.curselection():
-        selected_items.insert(index, listbox.get(index))
+def click_messagebox():
+    #messagebox.showinfo(title= "This is the title ye hear",
+                        #message="This is the message ye hear",)
 
-    if not selected_items:
-        print("You have ordered: Nothing")
+    # messagebox.showwarning(title="WARNING!",
+    #                     message="This is the warning ye hear",)
+
+    # messagebox.showerror(title="ERROR!",
+    #                        message="This is the error ye hear", )
+
+    # if messagebox.askokcancel(title="Ask ok cancle",
+    #                         message = "Do that thingamidig?"):
+    #     print("You did the thing!")
+    # else:
+    #     print("You didn't do the thing")
+
+    # if messagebox.askretrycancel(title="Ask ok retry",
+    #                           message="Do you want to retry the thing?"):
+    #     print("You retry the thing!")
+    # else:
+    #     print("You didn't retry the thing")
+
+    # if messagebox.askyesno(title="ask yes or no",message="Is that a yes or a no?"):
+    #     print("Yessssss")
+    # else:
+    #     print("Nooooo")
+
+    # answer = messagebox.askquestion(title="Ask Question", message="DO you like the smell of petrol?")
+    # if (answer == "yes"):
+    #     print("me too")
+    # else:
+    #     print("liar")
+
+    answer=messagebox.askyesnocancel(title= "Yes, no or cancel", message="Do you like things?", icon="warning")
+    if(answer==True):
+        print("you do?")
+    elif(answer==False):
+        print("You don't?")
     else:
-        print("You have ordered: ")
-        for index in selected_items:
-            print(index)
-def add_listbox():
-    listbox.insert(listbox.size(), entryBox.get())
-    listbox.config(height=listbox.size())
-
-
-def delete_listbox():
-    for index in reversed(listbox.curselection()):
-        listbox.delete(index)
-    listbox.config(height=listbox.size())
-
+        print("You dodge?")
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 
-listbox = Listbox(window,
-                  bg="#f7ffde",
-                  fg="black",
-                  font=("Constantia", 20),
-                  width=10,
-                  selectmode=MULTIPLE,
+button = Button(window,
+                command=click_messagebox,
+                text="Click me!")
+button.pack()
 
-                  )
-listbox.pack()
-
-listbox.insert(0, "pizza")
-listbox.insert(1, "pasta")
-listbox.insert(2, "garlic bread")
-listbox.insert(3, "soup")
-listbox.insert(4, "salad")
-
-listbox.config(height=listbox.size())
-
-entryBox = Entry(window)
-entryBox.pack()
-
-addButton = Button(window, text="add", command=add_listbox)
-addButton.pack()
-
-deleteButton = Button(window, text="delete", command=delete_listbox)
-deleteButton.pack()
-
-submitButton = Button(window, text="submit", command=submit_listbox)
-submitButton.pack()
+# listbox = Listbox(window,
+#                   bg="#f7ffde",
+#                   fg="black",
+#                   font=("Constantia", 20),
+#                   width=10,
+#                   selectmode=MULTIPLE,
+#
+#                   )
+# listbox.pack()
+#
+# listbox.insert(0, "pizza")
+# listbox.insert(1, "pasta")
+# listbox.insert(2, "garlic bread")
+# listbox.insert(3, "soup")
+# listbox.insert(4, "salad")
+#
+# listbox.config(height=listbox.size())
+#
+# entryBox = Entry(window)
+# entryBox.pack()
+#
+# addButton = Button(window, text="add", command=add_listbox)
+# addButton.pack()
+#
+# deleteButton = Button(window, text="delete", command=delete_listbox)
+# deleteButton.pack()
+#
+# submitButton = Button(window, text="submit", command=submit_listbox)
+# submitButton.pack()
 
 # fireImage = PhotoImage(file='fire.png')
 # fireLable = Label(image=fireImage)
