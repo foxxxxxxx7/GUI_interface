@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import colorchooser
+# from tkinter import messagebox
 
 # def submit():
 #     username = entry.get()
@@ -55,7 +56,7 @@ from tkinter import messagebox
 #         listbox.delete(index)
 #     listbox.config(height=listbox.size())
 
-def click_messagebox():
+# def click_messagebox():
     #messagebox.showinfo(title= "This is the title ye hear",
                         #message="This is the message ye hear",)
 
@@ -88,21 +89,35 @@ def click_messagebox():
     # else:
     #     print("liar")
 
-    answer=messagebox.askyesnocancel(title= "Yes, no or cancel", message="Do you like things?", icon="warning")
-    if(answer==True):
-        print("you do?")
-    elif(answer==False):
-        print("You don't?")
-    else:
-        print("You dodge?")
+    # answer=messagebox.askyesnocancel(title= "Yes, no or cancel", message="Do you like things?", icon="warning")
+    # if(answer==True):
+    #     print("you do?")
+    # elif(answer==False):
+    #     print("You don't?")
+    # else:
+    #     print("You dodge?")
+
+def click_colorchooser():
+    # color = colorchooser.askcolor()
+    # print(color)
+    # colorHex = color[1]
+    # print(colorHex)
+    # window.config(background=colorHex)
+    window.config(background=colorchooser.askcolor()[1])
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
+window.geometry("500x500")
 
 button = Button(window,
-                command=click_messagebox,
+                command=click_colorchooser,
                 text="Click me!")
 button.pack()
+
+# button = Button(window,
+#                 command=click_messagebox,
+#                 text="Click me!")
+# button.pack()
 
 # listbox = Listbox(window,
 #                   bg="#f7ffde",
