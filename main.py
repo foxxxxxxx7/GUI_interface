@@ -97,22 +97,39 @@ from tkinter import colorchooser
     # else:
     #     print("You dodge?")
 
-def click_colorchooser():
-    # color = colorchooser.askcolor()
-    # print(color)
-    # colorHex = color[1]
-    # print(colorHex)
-    # window.config(background=colorHex)
-    window.config(background=colorchooser.askcolor()[1])
+# def click_colorchooser():
+#     # color = colorchooser.askcolor()
+#     # print(color)
+#     # colorHex = color[1]
+#     # print(colorHex)
+#     # window.config(background=colorHex)
+#     window.config(background=colorchooser.askcolor()[1])
+
+def submit_text():
+    input = text.get("1.0",END)
+    print(input)
+
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
-window.geometry("500x500")
+# window.geometry("500x500")
 
-button = Button(window,
-                command=click_colorchooser,
-                text="Click me!")
+text=Text(window,
+          bg="light yellow",
+          font=("ink free", 25),
+          height=8,
+          width=20,
+          padx=20,
+          pady=20,
+          fg="purple")
+text.pack()
+button = Button(window,text="submit",command=submit_text)
 button.pack()
+
+# button = Button(window,
+#                 command=click_colorchooser,
+#                 text="Click me!")
+# button.pack()
 
 # button = Button(window,
 #                 command=click_messagebox,
