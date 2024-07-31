@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import colorchooser
 # from tkinter import messagebox
+from tkinter import filedialog
 
 # def submit():
 #     username = entry.get()
@@ -105,26 +106,38 @@ from tkinter import colorchooser
 #     # window.config(background=colorHex)
 #     window.config(background=colorchooser.askcolor()[1])
 
-def submit_text():
-    input = text.get("1.0",END)
-    print(input)
+# def submit_text():
+#     input = text.get("1.0",END)
+#     print(input)
+
+def openFile():
+    file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+                                           title="Open Which File?",
+                                           filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
+    file = open(file_path, 'r')
+    print(file.read())
+    file.close()
 
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-text=Text(window,
-          bg="light yellow",
-          font=("ink free", 25),
-          height=8,
-          width=20,
-          padx=20,
-          pady=20,
-          fg="purple")
-text.pack()
-button = Button(window,text="submit",command=submit_text)
+button = Button(text="Open", command=openFile)
 button.pack()
+
+#
+# text=Text(window,
+#           bg="light yellow",
+#           font=("ink free", 25),
+#           height=8,
+#           width=20,
+#           padx=20,
+#           pady=20,
+#           fg="purple")
+# text.pack()
+# button = Button(window,text="submit",command=submit_text)
+# button.pack()
 
 # button = Button(window,
 #                 command=click_colorchooser,
