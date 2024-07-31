@@ -110,12 +110,27 @@ from tkinter import filedialog
 #     input = text.get("1.0",END)
 #     print(input)
 
-def openFile():
-    file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
-                                           title="Open Which File?",
-                                           filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
-    file = open(file_path, 'r')
-    print(file.read())
+# def openFile():
+#     file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+#                                            title="Open Which File?",
+#                                            filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
+#     file = open(file_path, 'r')
+#     print(file.read())
+#     file.close()
+
+def saveFile():
+    file = filedialog.asksaveasfile(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+                                    defaultextension=".txt",
+                                    filetypes=[
+                                        ("Text file", ".txt"),
+                                        ("HTML file", ".html"),
+                                        ("All file", ".*")
+                                    ])
+    if file is None:
+        return
+    file_text = str(text.get(1.0, END))
+    # file_text = input("Enter your text fool:")
+    file.write(file_text)
     file.close()
 
 
@@ -123,10 +138,16 @@ window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-button = Button(text="Open", command=openFile)
+button = Button(text="save", command=saveFile)
 button.pack()
 
+text = Text(window)
+text.pack()
+
+# button = Button(text="Open", command=openFile)
+# button.pack()
 #
+# #
 # text=Text(window,
 #           bg="light yellow",
 #           font=("ink free", 25),
