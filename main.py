@@ -143,18 +143,25 @@ from tkinter import *
 # def paste():
 #      print("you paste the text!")
 
+def create_window():
+    #new_window = Toplevel() # Toplevel() = new window 'on top' of other windows. linked to a 'bottom' window
+    new_window = Tk()       # Tk() = new independent window
+    window.destroy()        # closes main window
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-frame = Frame(window, bg="pink",bd=5, relief=RAISED)
-frame.place(x=100, y=100)
+Button(window, text="Create new window", command=create_window).pack()
 
-Button(frame, text="W", font=("Consolas", 25), width=3).pack(side=TOP)
-Button(frame, text="A", font=("Consolas", 25), width=3).pack(side=LEFT)
-Button(frame, text="S", font=("Consolas", 25), width=3).pack(side=LEFT)
-Button(frame, text="D", font=("Consolas", 25), width=3).pack(side=LEFT)
+#
+# frame = Frame(window, bg="pink",bd=5, relief=RAISED)
+# frame.place(x=100, y=100)
+#
+# Button(frame, text="W", font=("Consolas", 25), width=3).pack(side=TOP)
+# Button(frame, text="A", font=("Consolas", 25), width=3).pack(side=LEFT)
+# Button(frame, text="S", font=("Consolas", 25), width=3).pack(side=LEFT)
+# Button(frame, text="D", font=("Consolas", 25), width=3).pack(side=LEFT)
 
 
 
