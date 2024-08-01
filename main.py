@@ -1,7 +1,7 @@
 from tkinter import *
+
 # from tkinter import colorchooser
 # from tkinter import messagebox
-from tkinter import filedialog
 
 # def submit():
 #     username = entry.get()
@@ -58,45 +58,45 @@ from tkinter import filedialog
 #     listbox.config(height=listbox.size())
 
 # def click_messagebox():
-    #messagebox.showinfo(title= "This is the title ye hear",
-                        #message="This is the message ye hear",)
+# messagebox.showinfo(title= "This is the title ye hear",
+# message="This is the message ye hear",)
 
-    # messagebox.showwarning(title="WARNING!",
-    #                     message="This is the warning ye hear",)
+# messagebox.showwarning(title="WARNING!",
+#                     message="This is the warning ye hear",)
 
-    # messagebox.showerror(title="ERROR!",
-    #                        message="This is the error ye hear", )
+# messagebox.showerror(title="ERROR!",
+#                        message="This is the error ye hear", )
 
-    # if messagebox.askokcancel(title="Ask ok cancle",
-    #                         message = "Do that thingamidig?"):
-    #     print("You did the thing!")
-    # else:
-    #     print("You didn't do the thing")
+# if messagebox.askokcancel(title="Ask ok cancle",
+#                         message = "Do that thingamidig?"):
+#     print("You did the thing!")
+# else:
+#     print("You didn't do the thing")
 
-    # if messagebox.askretrycancel(title="Ask ok retry",
-    #                           message="Do you want to retry the thing?"):
-    #     print("You retry the thing!")
-    # else:
-    #     print("You didn't retry the thing")
+# if messagebox.askretrycancel(title="Ask ok retry",
+#                           message="Do you want to retry the thing?"):
+#     print("You retry the thing!")
+# else:
+#     print("You didn't retry the thing")
 
-    # if messagebox.askyesno(title="ask yes or no",message="Is that a yes or a no?"):
-    #     print("Yessssss")
-    # else:
-    #     print("Nooooo")
+# if messagebox.askyesno(title="ask yes or no",message="Is that a yes or a no?"):
+#     print("Yessssss")
+# else:
+#     print("Nooooo")
 
-    # answer = messagebox.askquestion(title="Ask Question", message="DO you like the smell of petrol?")
-    # if (answer == "yes"):
-    #     print("me too")
-    # else:
-    #     print("liar")
+# answer = messagebox.askquestion(title="Ask Question", message="DO you like the smell of petrol?")
+# if (answer == "yes"):
+#     print("me too")
+# else:
+#     print("liar")
 
-    # answer=messagebox.askyesnocancel(title= "Yes, no or cancel", message="Do you like things?", icon="warning")
-    # if(answer==True):
-    #     print("you do?")
-    # elif(answer==False):
-    #     print("You don't?")
-    # else:
-    #     print("You dodge?")
+# answer=messagebox.askyesnocancel(title= "Yes, no or cancel", message="Do you like things?", icon="warning")
+# if(answer==True):
+#     print("you do?")
+# elif(answer==False):
+#     print("You don't?")
+# else:
+#     print("You dodge?")
 
 # def click_colorchooser():
 #     # color = colorchooser.askcolor()
@@ -111,62 +111,72 @@ from tkinter import filedialog
 #     print(input)
 
 
-def openFile():
-    file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
-                                           title="Open Which File?",
-                                           filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
-    file = open(file_path, 'r')
-    print(file.read())
-    file.close()
+# def openFile():
+#     file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+#                                            title="Open Which File?",
+#                                            filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
+#     file = open(file_path, 'r')
+#     print(file.read())
+#     file.close()
+#
+# def saveFile():
+#     file = filedialog.asksaveasfile(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+#                                     defaultextension=".txt",
+#                                     filetypes=[
+#                                         ("Text file", ".txt"),
+#                                         ("HTML file", ".html"),
+#                                         ("All file", ".*")
+#                                     ])
+#     if file is None:
+#         return
+#     # file_text = str(text.get(1.0, END))
+#     file_text = input("Enter your text fool:")
+#     file.write(file_text)
+#     file.close()
 
-def saveFile():
-    file = filedialog.asksaveasfile(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
-                                    defaultextension=".txt",
-                                    filetypes=[
-                                        ("Text file", ".txt"),
-                                        ("HTML file", ".html"),
-                                        ("All file", ".*")
-                                    ])
-    if file is None:
-        return
-    # file_text = str(text.get(1.0, END))
-    file_text = input("Enter your text fool:")
-    file.write(file_text)
-    file.close()
-
-def cut():
-    print("You cut the text!")
-
-def copy():
-    print("you copy the text!")
-
-def paste():
-     print("you paste the text!")
+# def cut():
+#     print("You cut the text!")
+#
+# def copy():
+#     print("you copy the text!")
+#
+# def paste():
+#      print("you paste the text!")
 
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-openImage = PhotoImage(file='burger.png')
-saveImage = PhotoImage(file='steak.png')
-exitImage = PhotoImage(file='fire.png')
+frame = Frame(window, bg="pink",bd=5, relief=RAISED)
+frame.place(x=100, y=100)
 
-menubar = Menu(window)
-window.config(menu=menubar)
+Button(frame, text="W", font=("Consolas", 25), width=3).pack(side=TOP)
+Button(frame, text="A", font=("Consolas", 25), width=3).pack(side=LEFT)
+Button(frame, text="S", font=("Consolas", 25), width=3).pack(side=LEFT)
+Button(frame, text="D", font=("Consolas", 25), width=3).pack(side=LEFT)
 
-fileMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
-menubar.add_cascade(label="File", menu=fileMenu)
-fileMenu.add_command(label="Open", command=openFile, image=openImage, compound=LEFT)
-fileMenu.add_command(label="Save", command=saveFile, image=saveImage, compound=LEFT)
-fileMenu.add_separator()
-fileMenu.add_command(label="Exit", command=quit, image=exitImage, compound=LEFT)
 
-editMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
-menubar.add_cascade(label="Edit", menu=editMenu)
-editMenu.add_command(label="Cut", command=cut)
-editMenu.add_command(label="Copy", command=copy)
-editMenu.add_command(label="Paste", command=paste)
+
+# openImage = PhotoImage(file='burger.png')
+# saveImage = PhotoImage(file='steak.png')
+# exitImage = PhotoImage(file='fire.png')
+#
+# menubar = Menu(window)
+# window.config(menu=menubar)
+#
+# fileMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
+# menubar.add_cascade(label="File", menu=fileMenu)
+# fileMenu.add_command(label="Open", command=openFile, image=openImage, compound=LEFT)
+# fileMenu.add_command(label="Save", command=saveFile, image=saveImage, compound=LEFT)
+# fileMenu.add_separator()
+# fileMenu.add_command(label="Exit", command=quit, image=exitImage, compound=LEFT)
+#
+# editMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
+# menubar.add_cascade(label="Edit", menu=editMenu)
+# editMenu.add_command(label="Cut", command=cut)
+# editMenu.add_command(label="Copy", command=copy)
+# editMenu.add_command(label="Paste", command=paste)
 
 # button = Button(text="save", command=saveFile)
 # button.pack()
