@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 # from tkinter import colorchooser
 # from tkinter import messagebox
@@ -143,16 +144,28 @@ from tkinter import *
 # def paste():
 #      print("you paste the text!")
 
-def create_window():
-    #new_window = Toplevel() # Toplevel() = new window 'on top' of other windows. linked to a 'bottom' window
-    new_window = Tk()       # Tk() = new independent window
-    window.destroy()        # closes main window
+# def create_window():
+#     #new_window = Toplevel() # Toplevel() = new window 'on top' of other windows. linked to a 'bottom' window
+#     new_window = Tk()       # Tk() = new independent window
+#     window.destroy()        # closes main window
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-Button(window, text="Create new window", command=create_window).pack()
+notebook = ttk.Notebook(window) # widget that manages a collection of windows and displays
+
+tab1 = Frame(notebook) # new frame for tab 1
+tab2 = Frame(notebook) # new frame for tab 2
+
+notebook.add(tab1,text="Tab 1")
+notebook.add(tab2,text="Tab 2")
+notebook.pack(expand=True, fill="both")   #expand to fill any empty space when adjusting window size  #fill will fill space on x or y axis
+
+Label(tab1, text="tab1 here ye hear", width=50, height=30).pack()
+Label(tab2, text="tab2 here ye hear", width=50, height=30).pack()
+
+# Button(window, text="Create new window", command=create_window).pack()
 
 #
 # frame = Frame(window, bg="pink",bd=5, relief=RAISED)
