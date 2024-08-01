@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import colorchooser
+# from tkinter import colorchooser
 # from tkinter import messagebox
 from tkinter import filedialog
 
@@ -110,13 +110,14 @@ from tkinter import filedialog
 #     input = text.get("1.0",END)
 #     print(input)
 
-# def openFile():
-#     file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
-#                                            title="Open Which File?",
-#                                            filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
-#     file = open(file_path, 'r')
-#     print(file.read())
-#     file.close()
+
+def openFile():
+    file_path = filedialog.askopenfilename(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
+                                           title="Open Which File?",
+                                           filetypes= (("text_files", "*.txt"), ("all_files", "*.*")))
+    file = open(file_path, 'r')
+    print(file.read())
+    file.close()
 
 def saveFile():
     file = filedialog.asksaveasfile(initialdir="C:\\Users\\robfo\\PycharmProjects\\GUI_interface",
@@ -128,21 +129,50 @@ def saveFile():
                                     ])
     if file is None:
         return
-    file_text = str(text.get(1.0, END))
-    # file_text = input("Enter your text fool:")
+    # file_text = str(text.get(1.0, END))
+    file_text = input("Enter your text fool:")
     file.write(file_text)
     file.close()
+
+def cut():
+    print("You cut the text!")
+
+def copy():
+    print("you copy the text!")
+
+def paste():
+     print("you paste the text!")
 
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-button = Button(text="save", command=saveFile)
-button.pack()
+openImage = PhotoImage(file='burger.png')
+saveImage = PhotoImage(file='steak.png')
+exitImage = PhotoImage(file='fire.png')
 
-text = Text(window)
-text.pack()
+menubar = Menu(window)
+window.config(menu=menubar)
+
+fileMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
+menubar.add_cascade(label="File", menu=fileMenu)
+fileMenu.add_command(label="Open", command=openFile, image=openImage, compound=LEFT)
+fileMenu.add_command(label="Save", command=saveFile, image=saveImage, compound=LEFT)
+fileMenu.add_separator()
+fileMenu.add_command(label="Exit", command=quit, image=exitImage, compound=LEFT)
+
+editMenu = Menu(menubar, tearoff=0, font=("MV Boli", 15))
+menubar.add_cascade(label="Edit", menu=editMenu)
+editMenu.add_command(label="Cut", command=cut)
+editMenu.add_command(label="Copy", command=copy)
+editMenu.add_command(label="Paste", command=paste)
+
+# button = Button(text="save", command=saveFile)
+# button.pack()
+#
+# text = Text(window)
+# text.pack()
 
 # button = Button(text="Open", command=openFile)
 # button.pack()
