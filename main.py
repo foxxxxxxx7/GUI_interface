@@ -1,6 +1,6 @@
 from tkinter import *
-from tkinter.ttk import *
-import time
+# from tkinter.ttk import *
+# import time
 # from tkinter import ttk
 # from tkinter import colorchooser
 # from tkinter import messagebox
@@ -150,32 +150,48 @@ import time
 #     new_window = Tk()       # Tk() = new independent window
 #     window.destroy()        # closes main window
 
-def start():
-    GB =100
-    download=0
-    speed=1
-    while(download<GB):
-        time.sleep(0.05)
-        bar["value"]+=(speed/GB)*100
-        download+=speed
-        percent.set(str(int((download/GB)*100))+ "%")
-        text.set(str(download)+"/"+str(GB)+ " GB completed")
-        window.update_idletasks()
+# def start():
+#     GB =100
+#     download=0
+#     speed=1
+#     while(download<GB):
+#         time.sleep(0.05)
+#         bar["value"]+=(speed/GB)*100
+#         download+=speed
+#         percent.set(str(int((download/GB)*100))+ "%")
+#         text.set(str(download)+"/"+str(GB)+ " GB completed")
+#         window.update_idletasks()
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-percent = StringVar()
-text = StringVar()
+canvas = Canvas(window,
+                height=500,
+                width=500)
+# canvas.create_line(0,0,500,500, fill="red", width=5)
+# canvas.create_line(0,500,500,0, fill="red", width=5)
+# canvas.create_rectangle(50,50,350,350, fill="green")
+# points=[250,0,500,500,0,500]
+# canvas.create_polygon( points, fill="cyan",outline="black", width=2)
+# canvas.create_arc(0,0,500,500, style=PIESLICE, start=270, extent= 180)
+canvas.create_arc(0,0,500,500, fill="red",extent=180, width=5)
+canvas.create_arc(0,0,500,500, fill="white",start=180, extent=180, width=5)
+canvas.create_line(0,250,500,250, width = 20)
+canvas.create_oval(180,180,320,320, fill="white",width=5)
+canvas.create_oval(210,210,290,290, fill="white")
+canvas.pack()
 
-bar = Progressbar(window, orient=HORIZONTAL, length=300)
-bar.pack(pady=10)
-
-percentLabel = Label(window, textvariable=percent).pack()
-taskLabel = Label(window, textvariable=text).pack()
-
-button =Button(window,text="Download", command=start).pack()
+# percent = StringVar()
+# text = StringVar()
+#
+# bar = Progressbar(window, orient=HORIZONTAL, length=300)
+# bar.pack(pady=10)
+#
+# percentLabel = Label(window, textvariable=percent).pack()
+# taskLabel = Label(window, textvariable=text).pack()
+#
+# button =Button(window,text="Download", command=start).pack()
 
 # titleLabel = Label(window, text="Enter your deets pls", font=("Arial",25)).grid(row=0, column=0,columnspan=2)
 #
