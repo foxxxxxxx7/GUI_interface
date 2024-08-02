@@ -162,25 +162,34 @@ from tkinter import *
 #         text.set(str(download)+"/"+str(GB)+ " GB completed")
 #         window.update_idletasks()
 
+def doSomething(event):
+    print("You pressed: " + event.keysym)
+    label.config(text=event.keysym)
+
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-canvas = Canvas(window,
-                height=500,
-                width=500)
+window.bind("<Key>", doSomething)
+
+label = Label(window,font=("Helvetica, 150"))
+label.pack()
+
+# canvas = Canvas(window,
+#                 height=500,
+#                 width=500)
 # canvas.create_line(0,0,500,500, fill="red", width=5)
 # canvas.create_line(0,500,500,0, fill="red", width=5)
 # canvas.create_rectangle(50,50,350,350, fill="green")
 # points=[250,0,500,500,0,500]
 # canvas.create_polygon( points, fill="cyan",outline="black", width=2)
 # canvas.create_arc(0,0,500,500, style=PIESLICE, start=270, extent= 180)
-canvas.create_arc(0,0,500,500, fill="red",extent=180, width=5)
-canvas.create_arc(0,0,500,500, fill="white",start=180, extent=180, width=5)
-canvas.create_line(0,250,500,250, width = 20)
-canvas.create_oval(180,180,320,320, fill="white",width=5)
-canvas.create_oval(210,210,290,290, fill="white")
-canvas.pack()
+# canvas.create_arc(0,0,500,500, fill="red",extent=180, width=5)
+# canvas.create_arc(0,0,500,500, fill="white",start=180, extent=180, width=5)
+# canvas.create_line(0,250,500,250, width = 20)
+# canvas.create_oval(180,180,320,320, fill="white",width=5)
+# canvas.create_oval(210,210,290,290, fill="white")
+# canvas.pack()
 
 # percent = StringVar()
 # text = StringVar()
