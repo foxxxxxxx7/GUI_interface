@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter.ttk import *
+import time
 # from tkinter import ttk
 # from tkinter import colorchooser
 # from tkinter import messagebox
@@ -148,22 +150,45 @@ from tkinter import *
 #     new_window = Tk()       # Tk() = new independent window
 #     window.destroy()        # closes main window
 
+def start():
+    GB =100
+    download=0
+    speed=1
+    while(download<GB):
+        time.sleep(0.05)
+        bar["value"]+=(speed/GB)*100
+        download+=speed
+        percent.set(str(int((download/GB)*100))+ "%")
+        text.set(str(download)+"/"+str(GB)+ " GB completed")
+        window.update_idletasks()
+
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-titleLabel = Label(window, text="Enter your deets pls", font=("Arial",25)).grid(row=0, column=0,columnspan=2)
+percent = StringVar()
+text = StringVar()
 
-firstNameLabel = Label(window, text="First Name: ", width=20, bg="light grey").grid(row=1, column=0)
-firstNameEntry = Entry(window).grid(row=1, column=1)
+bar = Progressbar(window, orient=HORIZONTAL, length=300)
+bar.pack(pady=10)
 
-lastNameLabel = Label(window, text="Last Name: ", bg="dark grey").grid(row=2, column=0)
-lastNameEntry = Entry(window).grid(row=2, column=1)
+percentLabel = Label(window, textvariable=percent).pack()
+taskLabel = Label(window, textvariable=text).pack()
 
-emailLabel = Label(window, text="Email: ", width = 40, bg="light grey").grid(row=3, column=0)
-emailEntry = Entry(window).grid(row=3, column=1)
+button =Button(window,text="Download", command=start).pack()
 
-submitButton = Button(window, text="Submit").grid(row=4, column=0, columnspan=2)
+# titleLabel = Label(window, text="Enter your deets pls", font=("Arial",25)).grid(row=0, column=0,columnspan=2)
+#
+# firstNameLabel = Label(window, text="First Name: ", width=20, bg="light grey").grid(row=1, column=0)
+# firstNameEntry = Entry(window).grid(row=1, column=1)
+#
+# lastNameLabel = Label(window, text="Last Name: ", bg="dark grey").grid(row=2, column=0)
+# lastNameEntry = Entry(window).grid(row=2, column=1)
+#
+# emailLabel = Label(window, text="Email: ", width = 40, bg="light grey").grid(row=3, column=0)
+# emailEntry = Entry(window).grid(row=3, column=1)
+#
+# submitButton = Button(window, text="Submit").grid(row=4, column=0, columnspan=2)
 
 # notebook = ttk.Notebook(window) # widget that manages a collection of windows and displays
 #
