@@ -1,6 +1,5 @@
 from tkinter import *
-from tkinter import ttk
-
+# from tkinter import ttk
 # from tkinter import colorchooser
 # from tkinter import messagebox
 
@@ -153,17 +152,30 @@ window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-notebook = ttk.Notebook(window) # widget that manages a collection of windows and displays
+titleLabel = Label(window, text="Enter your deets pls", font=("Arial",25)).grid(row=0, column=0,columnspan=2)
 
-tab1 = Frame(notebook) # new frame for tab 1
-tab2 = Frame(notebook) # new frame for tab 2
+firstNameLabel = Label(window, text="First Name: ", width=20, bg="light grey").grid(row=1, column=0)
+firstNameEntry = Entry(window).grid(row=1, column=1)
 
-notebook.add(tab1,text="Tab 1")
-notebook.add(tab2,text="Tab 2")
-notebook.pack(expand=True, fill="both")   #expand to fill any empty space when adjusting window size  #fill will fill space on x or y axis
+lastNameLabel = Label(window, text="Last Name: ", bg="dark grey").grid(row=2, column=0)
+lastNameEntry = Entry(window).grid(row=2, column=1)
 
-Label(tab1, text="tab1 here ye hear", width=50, height=30).pack()
-Label(tab2, text="tab2 here ye hear", width=50, height=30).pack()
+emailLabel = Label(window, text="Email: ", width = 40, bg="light grey").grid(row=3, column=0)
+emailEntry = Entry(window).grid(row=3, column=1)
+
+submitButton = Button(window, text="Submit").grid(row=4, column=0, columnspan=2)
+
+# notebook = ttk.Notebook(window) # widget that manages a collection of windows and displays
+#
+# tab1 = Frame(notebook) # new frame for tab 1
+# tab2 = Frame(notebook) # new frame for tab 2
+#
+# notebook.add(tab1,text="Tab 1")
+# notebook.add(tab2,text="Tab 2")
+# notebook.pack(expand=True, fill="both")   #expand to fill any empty space when adjusting window size  #fill will fill space on x or y axis
+#
+# Label(tab1, text="tab1 here ye hear", width=50, height=30).pack()
+# Label(tab2, text="tab2 here ye hear", width=50, height=30).pack()
 
 # Button(window, text="Create new window", command=create_window).pack()
 
