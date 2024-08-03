@@ -167,20 +167,43 @@ from tkinter import *
 #     print("You pressed: " + event.keysym)
 #     label.config(text=event.keysym)
 
-def doSomething(event):
-    print("Click coordinates are as follows: " + str(event.x)+","+str(event.y))
+# def doSomething(event):
+#     print("Click coordinates are as follows: " + str(event.x)+","+str(event.y))
+
+def drag_start(event):
+    widget = event.widget
+    widget.startX = event.x
+    widget.startY = event.y
+
+def drag_motion(event):
+    widget = event.widget
+    x = widget.winfo_x() - widget.startX + event.x
+    y = widget.winfo_y() - widget.startY + event.y
+    widget.place(x=x,y=y)
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
+
+label = Label(window, bg="Light blue", width=10, height=5)
+label.place(x=0,y=0)
+
+label2 = Label(window, bg="Light green", width=10, height=5)
+label2.place(x=100,y=100)
+
+label.bind("<Button-1>",drag_start)
+label.bind("<B1-Motion>",drag_motion)
+
+label2.bind("<Button-1>",drag_start)
+label2.bind("<B1-Motion>",drag_motion)
 
 # window.bind("<Button-1>", doSomething)  # left click
 # window.bind("<Button-2>", doSomething)  # scroll wheel click
 # window.bind("<Button-3>", doSomething)  # right click
 # window.bind("<ButtonRelease>", doSomething)  # any mouse button released
 # window.bind("<Enter>", doSomething)  #when mouse pointer enters window
-# window.bind("<Leave>", doSomething)  #when mouse pointer leaves window
-window.bind("<Motion>", doSomething)  #when mouse pointer is in motion
+# # window.bind("<Leave>", doSomething)  #when mouse pointer leaves window
+# window.bind("<Motion>", doSomething)  #when mouse pointer is in motion
 
 # window.bind("<Key>", doSomething)
 #
