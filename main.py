@@ -1,4 +1,5 @@
 from tkinter import *
+
 # from tkinter.ttk import *
 # import time
 # from tkinter import ttk
@@ -162,18 +163,29 @@ from tkinter import *
 #         text.set(str(download)+"/"+str(GB)+ " GB completed")
 #         window.update_idletasks()
 
+# def doSomething(event):
+#     print("You pressed: " + event.keysym)
+#     label.config(text=event.keysym)
+
 def doSomething(event):
-    print("You pressed: " + event.keysym)
-    label.config(text=event.keysym)
+    print("Click coordinates are as follows: " + str(event.x)+","+str(event.y))
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-window.bind("<Key>", doSomething)
+# window.bind("<Button-1>", doSomething)  # left click
+# window.bind("<Button-2>", doSomething)  # scroll wheel click
+# window.bind("<Button-3>", doSomething)  # right click
+# window.bind("<ButtonRelease>", doSomething)  # any mouse button released
+# window.bind("<Enter>", doSomething)  #when mouse pointer enters window
+# window.bind("<Leave>", doSomething)  #when mouse pointer leaves window
+window.bind("<Motion>", doSomething)  #when mouse pointer is in motion
 
-label = Label(window,font=("Helvetica, 150"))
-label.pack()
+# window.bind("<Key>", doSomething)
+#
+# label = Label(window,font=("Helvetica, 150"))
+# label.pack()
 
 # canvas = Canvas(window,
 #                 height=500,
@@ -237,7 +249,6 @@ label.pack()
 # Button(frame, text="A", font=("Consolas", 25), width=3).pack(side=LEFT)
 # Button(frame, text="S", font=("Consolas", 25), width=3).pack(side=LEFT)
 # Button(frame, text="D", font=("Consolas", 25), width=3).pack(side=LEFT)
-
 
 
 # openImage = PhotoImage(file='burger.png')
