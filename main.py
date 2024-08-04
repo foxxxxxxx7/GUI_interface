@@ -181,22 +181,39 @@ from tkinter import *
 #     y = widget.winfo_y() - widget.startY + event.y
 #     widget.place(x=x,y=y)
 
+# def move_up(event):
+#     label.place(x=label.winfo_x(), y=label.winfo_y()-10)
+#
+# def move_down(event):
+#     label.place(x=label.winfo_x(), y=label.winfo_y()+10)
+#
+# def move_left(event):
+#     label.place(x=label.winfo_x()-10, y=label.winfo_y())
+#
+# def move_right(event):
+#     label.place(x=label.winfo_x()+10, y=label.winfo_y())
+
 def move_up(event):
-    label.place(x=label.winfo_x(), y=label.winfo_y()-10)
+    canvas.move(canvasImage,0,-10)
 
 def move_down(event):
-    label.place(x=label.winfo_x(), y=label.winfo_y()+10)
+    canvas.move(canvasImage,0,10)
 
 def move_left(event):
-    label.place(x=label.winfo_x()-10, y=label.winfo_y())
-
+    canvas.move(canvasImage,-10, 0)
 def move_right(event):
-    label.place(x=label.winfo_x()+10, y=label.winfo_y())
+    canvas.move(canvasImage,10, 0)
 
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
-window.geometry("500x500")
+# window.geometry("500x500")
+
+canvas = Canvas(window,width=500,height=500)
+canvas.pack()
+
+myImage = PhotoImage(file="fire.png")
+canvasImage = canvas.create_image(0,0,image=myImage, anchor=NW)
 
 window.bind("<w>",move_up)
 window.bind("<s>",move_down)
@@ -208,10 +225,10 @@ window.bind("<Left>",move_left)
 window.bind("<Right>",move_right)
 
 
-myImage = PhotoImage(file="fire.png")
-label = Label(window,
-              image=myImage)
-label.place(x=0,y=0)
+# myImage = PhotoImage(file="fire.png")
+# label = Label(window,
+#               image=myImage)
+# label.place(x=0,y=0)
 
 # label = Label(window, bg="Light blue", width=10, height=5)
 # label.place(x=0,y=0)
