@@ -1,7 +1,7 @@
 from tkinter import *
 
 # from tkinter.ttk import *
-# import time
+import time
 # from tkinter import ttk
 # from tkinter import colorchooser
 # from tkinter import messagebox
@@ -193,36 +193,63 @@ from tkinter import *
 # def move_right(event):
 #     label.place(x=label.winfo_x()+10, y=label.winfo_y())
 
-def move_up(event):
-    canvas.move(canvasImage,0,-10)
+# def move_up(event):
+#     canvas.move(canvasImage,0,-10)
+#
+# def move_down(event):
+#     canvas.move(canvasImage,0,10)
+#
+# def move_left(event):
+#     canvas.move(canvasImage,-10, 0)
+# def move_right(event):
+#     canvas.move(canvasImage,10, 0)
 
-def move_down(event):
-    canvas.move(canvasImage,0,10)
-
-def move_left(event):
-    canvas.move(canvasImage,-10, 0)
-def move_right(event):
-    canvas.move(canvasImage,10, 0)
+WIDTH = 500
+HEIGHT = 500
+xVelocity=4.5
+yVelocity=2
 
 
 window = Tk()  # instatiate an instance of a window
 window.title("Fox's first window")
 # window.geometry("500x500")
 
-canvas = Canvas(window,width=500,height=500)
+canvas = Canvas(window,
+                width=WIDTH,
+                height=HEIGHT)
 canvas.pack()
 
-myImage = PhotoImage(file="fire.png")
+myImage = PhotoImage(file="Fox Logo tiny.png")
 canvasImage = canvas.create_image(0,0,image=myImage, anchor=NW)
 
-window.bind("<w>",move_up)
-window.bind("<s>",move_down)
-window.bind("<a>",move_left)
-window.bind("<d>",move_right)
-window.bind("<Up>",move_up)
-window.bind("<Down>",move_down)
-window.bind("<Left>",move_left)
-window.bind("<Right>",move_right)
+image_width = myImage.width()
+image_height = myImage.height()
+
+while True:
+    coordinates = canvas.coords(canvasImage)
+    print(coordinates)
+    if(coordinates[0]>=(WIDTH-image_width) or coordinates[0]<0):
+        xVelocity = -xVelocity
+    if (coordinates[1] >= (HEIGHT - image_width) or coordinates[1] < 0):
+        yVelocity = -yVelocity
+    canvas.move(canvasImage,xVelocity,yVelocity)
+    window.update()
+    time.sleep(0.01)
+
+# canvas = Canvas(window,width=500,height=500)
+# canvas.pack()
+#
+# myImage = PhotoImage(file="fire.png")
+# canvasImage = canvas.create_image(0,0,image=myImage, anchor=NW)
+#
+# window.bind("<w>",move_up)
+# window.bind("<s>",move_down)
+# window.bind("<a>",move_left)
+# window.bind("<d>",move_right)
+# window.bind("<Up>",move_up)
+# window.bind("<Down>",move_down)
+# window.bind("<Left>",move_left)
+# window.bind("<Right>",move_right)
 
 
 # myImage = PhotoImage(file="fire.png")
