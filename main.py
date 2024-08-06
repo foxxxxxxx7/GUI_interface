@@ -1,5 +1,6 @@
 from tkinter import *
 
+from Ball import *
 # from tkinter.ttk import *
 import time
 # from tkinter import ttk
@@ -206,8 +207,8 @@ import time
 
 WIDTH = 500
 HEIGHT = 500
-xVelocity=4.5
-yVelocity=2
+# xVelocity=4.5
+# yVelocity=2
 
 
 window = Tk()  # instatiate an instance of a window
@@ -219,22 +220,34 @@ canvas = Canvas(window,
                 height=HEIGHT)
 canvas.pack()
 
-myImage = PhotoImage(file="Fox Logo tiny.png")
-canvasImage = canvas.create_image(0,0,image=myImage, anchor=NW)
+volley_ball = Ball(canvas,0,0,100,3,5,"white")
+tennis_ball = Ball(canvas,0,0,15,7,8,"#CCFF00")
+basket_ball = Ball(canvas,0,0,110,5,9,"#F88158")
 
-image_width = myImage.width()
-image_height = myImage.height()
 
 while True:
-    coordinates = canvas.coords(canvasImage)
-    print(coordinates)
-    if(coordinates[0]>=(WIDTH-image_width) or coordinates[0]<0):
-        xVelocity = -xVelocity
-    if (coordinates[1] >= (HEIGHT - image_width) or coordinates[1] < 0):
-        yVelocity = -yVelocity
-    canvas.move(canvasImage,xVelocity,yVelocity)
+    volley_ball.move()
+    tennis_ball.move()
+    basket_ball.move()
     window.update()
-    time.sleep(0.01)
+    time.sleep(0.05)
+#
+# myImage = PhotoImage(file="Fox Logo tiny.png")
+# canvasImage = canvas.create_image(0,0,image=myImage, anchor=NW)
+#
+# image_width = myImage.width()
+# image_height = myImage.height()
+#
+# while True:
+#     coordinates = canvas.coords(canvasImage)
+#     print(coordinates)
+#     if(coordinates[0]>=(WIDTH-image_width) or coordinates[0]<0):
+#         xVelocity = -xVelocity
+#     if (coordinates[1] >= (HEIGHT - image_width) or coordinates[1] < 0):
+#         yVelocity = -yVelocity
+#     canvas.move(canvasImage,xVelocity,yVelocity)
+#     window.update()
+#     time.sleep(0.01)
 
 # canvas = Canvas(window,width=500,height=500)
 # canvas.pack()
